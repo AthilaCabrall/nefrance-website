@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+/*
+  Dark is the committed theme for this brand — not a prefers-color-scheme
+  fallback. Instituto Nefrance's identity (aurora brain gradient on black)
+  only reads correctly this way, so there is a single locked palette.
+*/
+:root {
+  /* Superfícies — tinta quase preta com fundo de roxo */
+  --surface-paper: #0b0912;
+  --surface-card: #15121f;
+  --surface-sunken: #1b1728;
+
+  /* Tinta */
+  --ink-primary: #f4f2f9;
+  --ink-secondary: #b6b0c6;
+  --ink-muted: #837d97;
+  --ink-on-brand: #0b0912;
+
+  /* Marca — roxo dominante indo para verde, como o cérebro da logo */
+  --brand-purple: #9b6bff;
+  --brand-purple-soft: #241c3d;
+  --brand-violet: #6d3fd6;
+  --brand-green: #4fd689;
+  --brand-gradient: linear-gradient(135deg, #5b21b6 0%, #9b6bff 52%, #4fd689 100%);
+  --brand-gradient-soft: linear-gradient(135deg, #241c3d 0%, #2a1f42 52%, #16301f 100%);
+
+  --aurora-stop-1: #5b21b6;
+  --aurora-stop-2: #9b6bff;
+  --aurora-stop-3: #4fd689;
+
+  --border-hairline: #2a2438;
+  --border-silver: rgb(255 255 255 / 0.16);
+  --shadow-tint: 91 47 214;
+
+  --radius-card: 24px;
+  --radius-pill: 999px;
+}
+
+@theme inline {
+  --color-paper: var(--surface-paper);
+  --color-card: var(--surface-card);
+  --color-sunken: var(--surface-sunken);
+
+  --color-ink: var(--ink-primary);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-on-brand: var(--ink-on-brand);
+
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-purple-soft: var(--brand-purple-soft);
+  --color-brand-violet: var(--brand-violet);
+  --color-brand-green: var(--brand-green);
+
+  --color-hairline: var(--border-hairline);
+  --color-silver: var(--border-silver);
+
+  --font-display: var(--font-cormorant);
+  --font-sans: var(--font-montserrat);
+  --font-mono: var(--font-jetbrains);
+
+  --radius-card: var(--radius-card);
+  --radius-pill: var(--radius-pill);
+}
+
+* {
+  border-color: var(--border-hairline);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  scroll-snap-type: y mandatory;
+}
+
+/* Each top-level section is a landing point: after every scroll gesture the
+   page settles at the nearest section edge instead of stopping mid-content,
+   the "locks at each container" feel common on institutional sites. */
+main > section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scroll-margin-top: 68px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none;
+  }
+}
+
+body {
+  background: var(--surface-paper);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--brand-purple);
+  color: var(--ink-on-brand);
+}
+
+.brand-gradient-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-gradient-bg {
+  background: var(--brand-gradient);
+}
+
+.glass-panel {
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid var(--border-silver);
+  box-shadow: 0 12px 40px -12px rgb(0 0 0 / 0.2);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Lightweight CSS stand-in for the Aurora look on small surfaces (cards) —
+   a real per-card WebGL context is too costly to repeat six times on mobile. */
+.gradient-flow {
+  background-image: linear-gradient(
+    120deg,
+    var(--brand-violet) 0%,
+    var(--brand-purple) 35%,
+    var(--brand-green) 70%,
+    var(--brand-violet) 100%
+  );
+  background-size: 240% 240%;
+  animation: gradient-flow 14s ease-in-out infinite;
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 40%;
+  }
+  50% {
+    background-position: 100% 60%;
+  }
+  100% {
+    background-position: 0% 40%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-flow {
+    animation: none;
+    background-position: 30% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
