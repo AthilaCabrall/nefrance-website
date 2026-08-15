@@ -7,14 +7,19 @@ Registro de cada atualização do site, mais recente primeiro. Formato livre ins
 ### Adicionado
 - Botão flutuante de WhatsApp, fixo na tela durante toda a navegação (pedido comum em sites de clínica concorrentes pesquisados no início do projeto — nenhum ponto de contato ficava a mais de uma rolagem de distância).
 - `README.md` e este `CHANGELOG.md`.
+- Logo com efeito 3D no menu: inclina conforme o mouse passa por cima, pronta pra receber a logo real em PNG (`components/ui/tilt-logo.tsx`). Por enquanto usa uma marca de cérebro em SVG como placeholder.
+- Spotlight nos cards de especialidades: uma luz suave segue o cursor ao passar por cima, reforçando que o card é interativo.
+- Entrada do título do hero palavra por palavra (split text), só ali — o resto do site continua com o fade padrão pra não virar exagero.
 
 ### Alterado
 - **Scroll**: o encaixe automático por seção (scroll-snap) estava travando com muita força a cada rolagem. Trocado de `mandatory` para `proximity` — agora só se ajusta quando o usuário já está perto do início de uma seção, sem lutar contra o gesto de rolagem.
-- **Hero**: a mancha orgânica atrás do cérebro foi trocada por um bloco geométrico retangular com foto (mais fiel à referência do Behance/Instituto Rio Negro), com o cérebro quebrando a borda do bloco.
+- **Hero**: a mancha orgânica atrás do cérebro foi trocada por um bloco geométrico retangular com foto (mais fiel à referência do Behance/Instituto Rio Negro). O cérebro emoji foi removido depois (ver abaixo); o bloco com foto ficou sozinho, esperando a logo real.
 - **Depoimentos**: redesenhados no formato de review (avatar, nome, estrelas, tempo relativo, texto), com cartão branco — sem usar a marca do Google, só o padrão visual, pra não parecer um review verificado de verdade.
 
 ### Removido
 - Mascote da coruja no hero.
+- Emoji de cérebro no hero (o cliente vai colocar a logo em PNG no lugar).
+- Tudo relacionado a ferramentas de IA usadas para construir o site: `.claude/`, `CLAUDE.md`, `AGENTS.md`, script de screenshot e a dependência do Playwright. O repositório agora é só o essencial pra baixar e rodar em qualquer editor.
 
 ## 2026-08-13
 

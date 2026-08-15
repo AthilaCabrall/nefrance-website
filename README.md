@@ -32,7 +32,6 @@ components/
 lib/data/             # conteúdo editável (equipe, especialidades, depoimentos, processo)
 lib/team-photos.server.ts   # leitura das pastas de foto da equipe
 public/team/{slug}/   # fotos reais de cada profissional (ver abaixo)
-scripts/screenshot.mjs      # gera PNG da página inteira (desktop + mobile) sem precisar subir o site
 ```
 
 ## Adicionando foto de uma profissional
@@ -62,14 +61,6 @@ Tudo em `lib/data/*.ts`, sem precisar tocar nos componentes:
 - Fotos da Andrea e da Ingrid (Luciene já está com foto real)
 - Imagem do bloco geométrico do hero (`components/sections/hero.tsx`)
 - Estatística "+180 avaliações concluídas" no hero
-
-## Gerando screenshots da página inteira
-
-Útil para mandar pra aprovação sem precisar publicar o site:
-
-```bash
-node scripts/screenshot.mjs <pasta-de-saida>
-```
 
 ## Deploy
 

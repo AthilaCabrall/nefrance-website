@@ -5,6 +5,8 @@ import Link from "next/link";
 import { List, X } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "./ui/container";
 import { Button } from "./ui/button";
+import { TiltLogo } from "./ui/tilt-logo";
+import { BrainMark } from "./ui/brain-mark";
 
 const LINKS = [
   { href: "#sobre", label: "Sobre" },
@@ -20,7 +22,10 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-hairline bg-paper/85 backdrop-blur-md">
       <Container className="flex h-[68px] items-center justify-between">
-        <Link href="#top" className="flex items-baseline gap-2 text-[17px] font-bold tracking-tight">
+        <Link href="#top" className="flex items-center gap-2.5 text-[17px] font-bold tracking-tight">
+          <TiltLogo className="h-9 w-9 shrink-0">
+            <BrainMark className="h-9 w-9" />
+          </TiltLogo>
           <span className="brand-gradient-text font-display">Instituto Nefrance</span>
         </Link>
 
