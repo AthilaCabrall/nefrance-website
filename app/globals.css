@@ -70,15 +70,15 @@
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
 }
 
-/* Each top-level section is a landing point: after every scroll gesture the
-   page settles at the nearest section edge instead of stopping mid-content,
-   the "locks at each container" feel common on institutional sites. */
+/* Each top-level section is a soft landing point: scrolling eases toward the
+   nearest section edge only when it's already close, instead of forcing a
+   hard stop on every gesture. Gentler than "mandatory", still reads as
+   intentional on an institutional site. */
 main > section {
   scroll-snap-align: start;
-  scroll-snap-stop: always;
   scroll-margin-top: 68px;
 }
 
@@ -116,6 +116,28 @@ body {
   box-shadow: 0 12px 40px -12px rgb(0 0 0 / 0.2);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+}
+
+.whatsapp-float {
+  animation: whatsapp-pulse 2.6s ease-out infinite;
+}
+
+@keyframes whatsapp-pulse {
+  0% {
+    box-shadow: 0 12px 28px -8px rgb(0 0 0 / 0.5), 0 0 0 0 rgb(37 211 102 / 0.55);
+  }
+  70% {
+    box-shadow: 0 12px 28px -8px rgb(0 0 0 / 0.5), 0 0 0 14px rgb(37 211 102 / 0);
+  }
+  100% {
+    box-shadow: 0 12px 28px -8px rgb(0 0 0 / 0.5), 0 0 0 0 rgb(37 211 102 / 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float {
+    animation: none;
+  }
 }
 
 /* Lightweight CSS stand-in for the Aurora look on small surfaces (cards) —

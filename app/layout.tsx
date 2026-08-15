@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Cormorant_Garamond, JetBrains_Mono } from "next/font/google";
 import { AuroraBackground } from "@/components/aurora/aurora-background";
+import { WhatsappFloat } from "@/components/whatsapp-float";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col bg-paper text-ink">
         <AuroraBackground className="pointer-events-none fixed inset-0 -z-10 h-full w-full opacity-70" />
         <div className="relative flex min-h-full flex-1 flex-col">{children}</div>
+        <WhatsappFloat />
       </body>
     </html>
   );

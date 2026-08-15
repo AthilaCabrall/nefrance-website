@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Instituto Nefrance
 
-## Getting Started
+Site institucional do Instituto Nefrance — clínica multidisciplinar no Setor Bela Vista, Goiânia, especializada em avaliação e intervenção em dificuldades de aprendizagem (TDAH, TEA, dislexia, atraso na alfabetização e afins).
 
-First, run the development server:
+Site em página única, com fundo animado (Aurora/WebGL), carrossel de equipe, cards de especialidades e formulário de contato via WhatsApp.
+
+## Stack
+
+- [Next.js 16](https://nextjs.org) (App Router, Turbopack)
+- [Tailwind CSS v4](https://tailwindcss.com)
+- [Motion](https://motion.dev) para animações
+- [Phosphor Icons](https://phosphoricons.com)
+- [ogl](https://github.com/oframe/ogl) para o fundo Aurora (WebGL)
+
+## Rodando localmente
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estrutura
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/                  # rotas, layout raiz, globals.css (tokens de cor/tipografia)
+components/
+  sections/           # uma seção da home por arquivo (hero, especialidades, equipe...)
+  ui/                 # peças reutilizáveis (botão, container, reveal on-scroll...)
+  aurora/             # fundo animado em WebGL
+lib/data/             # conteúdo editável (equipe, especialidades, depoimentos, processo)
+lib/team-photos.server.ts   # leitura das pastas de foto da equipe
+public/team/{slug}/   # fotos reais de cada profissional (ver abaixo)
+scripts/screenshot.mjs      # gera PNG da página inteira (desktop + mobile) sem precisar subir o site
+```
 
-## Learn More
+## Adicionando foto de uma profissional
 
-To learn more about Next.js, take a look at the following resources:
+Não precisa mexer em código. Solte a imagem dentro de `public/team/{slug}/`, por exemplo:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+public/team/andrea/foto-1.jpg
+public/team/ingrid/foto-1.jpg
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+O site lê a pasta a cada carregamento de página. Mais de uma imagem na mesma pasta = uma é sorteada aleatoriamente a cada visita. Slugs atuais: `andrea`, `ingrid`, `luciene` (ver `lib/data/team.ts`).
 
-## Deploy on Vercel
+## Conteúdo editável
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Tudo em `lib/data/*.ts`, sem precisar tocar nos componentes:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `team.ts` — equipe (nome, cargo, bio, tags)
+- `specialties.ts` — especialidades atendidas
+- `testimonials.ts` — depoimentos (estrelas, avatar, texto)
+- `process.ts` — passos do "como funciona"
+
+## Placeholders que ainda precisam de conteúdo real
+
+- Número de WhatsApp: `5562000000000` (aparece em `cta-band.tsx`, `cta-form.tsx`, `whatsapp-float.tsx`, `footer.tsx`)
+- E-mail e Instagram no rodapé
+- Fotos da Andrea e da Ingrid (Luciene já está com foto real)
+- Imagem do bloco geométrico do hero (`components/sections/hero.tsx`)
+- Estatística "+180 avaliações concluídas" no hero
+
+## Gerando screenshots da página inteira
+
+Útil para mandar pra aprovação sem precisar publicar o site:
+
+```bash
+node scripts/screenshot.mjs <pasta-de-saida>
+```
+
+## Deploy
+
+Feito via [Vercel](https://vercel.com), conectado a este repositório. Qualquer push em `main` gera um novo deploy automaticamente depois que o projeto for importado no dashboard da Vercel.

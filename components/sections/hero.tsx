@@ -5,7 +5,6 @@ import Image from "next/image";
 import { Container } from "../ui/container";
 import { Button } from "../ui/button";
 import { Magnetic } from "../ui/magnetic";
-import { OwlMark } from "../ui/owl-mark";
 
 // Placeholder for the transparent PNG cutout the client is producing in Photoshop
 // ("fundo fixo + png saindo dele"). Swap this emoji for an <Image> once it lands.
@@ -58,45 +57,35 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
           className="relative mx-auto hidden aspect-square w-full max-w-[420px] items-center justify-center lg:flex lg:max-w-none"
         >
-          {/* Blob-shaped placeholder for a real photo (child / session). Swap the
-              src for a real image whenever one is ready; the clipped shape stays. */}
-          <div
-            className="absolute left-0 top-2 h-[78%] w-[78%] overflow-hidden opacity-90"
-            style={{ borderRadius: "42% 58% 63% 37% / 41% 44% 56% 59%" }}
-          >
+          {/* Solid geometric block (Rio Negro reference): a photo card the cutout
+              breaks out of, not an organic blob. Swap the photo src for a real
+              one whenever it lands. */}
+          <div className="absolute inset-x-8 inset-y-6 overflow-hidden rounded-[32px]">
             <Image
-              src="https://picsum.photos/seed/nefrance-hero-blob/700/700"
+              src="https://picsum.photos/seed/nefrance-hero-block/760/760"
               alt=""
               fill
               className="object-cover"
-              sizes="380px"
+              sizes="360px"
             />
-            <div className="absolute inset-0 brand-gradient-bg opacity-45" aria-hidden />
+            <div className="absolute inset-0 brand-gradient-bg opacity-40" aria-hidden />
           </div>
 
           <motion.span
             animate={reduce ? undefined : { y: [0, -10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="relative right-0 text-[230px] leading-none drop-shadow-[0_40px_70px_rgba(91,33,182,0.5)]"
+            className="absolute -bottom-4 -right-2 z-10 text-[220px] leading-none drop-shadow-[0_40px_70px_rgba(91,33,182,0.5)]"
             aria-hidden
           >
             {HERO_CUTOUT_PLACEHOLDER}
           </motion.span>
 
-          <div className="glass-panel absolute bottom-6 left-2 flex items-center gap-3 rounded-[16px] px-4 py-3">
+          <div className="glass-panel absolute bottom-2 left-4 z-10 flex items-center gap-3 rounded-[16px] px-4 py-3">
             <span className="font-mono text-xl font-medium brand-gradient-text">+180</span>
             <span className="max-w-[9ch] text-[12px] font-medium leading-tight text-ink-secondary">
               avaliações concluídas em Goiânia
             </span>
           </div>
-
-          <motion.div
-            animate={reduce ? undefined : { y: [0, -6, 0] }}
-            transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-            className="absolute right-4 top-4"
-          >
-            <OwlMark className="h-12 w-12 drop-shadow-sm" />
-          </motion.div>
         </motion.div>
       </Container>
     </section>
