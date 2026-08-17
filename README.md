@@ -62,6 +62,10 @@ Tudo em `lib/data/*.ts`, sem precisar tocar nos componentes:
 - Imagem do bloco geométrico do hero (`components/sections/hero.tsx`)
 - Estatística "+180 avaliações concluídas" no hero
 
+## Logo
+
+`public/logo-3d.png` é a logo em 3D usada no menu (`components/nav.tsx`, dentro de `TiltLogo`, que inclina a imagem conforme o mouse passa por cima). Para trocar por outra versão, basta substituir o arquivo — mesmo nome, mesma pasta.
+
 ## Deploy
 
 Feito via [Vercel](https://vercel.com), conectado a este repositório. Qualquer push em `main` gera um novo deploy automaticamente depois que o projeto for importado no dashboard da Vercel.

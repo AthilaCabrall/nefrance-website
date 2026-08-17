@@ -2,6 +2,14 @@
 
 Registro de cada atualização do site, mais recente primeiro. Formato livre inspirado em [Keep a Changelog](https://keepachangelog.com/pt-BR/).
 
+## 2026-08-17
+
+### Adicionado
+- Logo 3D de verdade (`public/logo-3d.png`), gerada com Higgsfield (Recraft V4.1): cérebro em vidro/cromo com o degradê roxo → verde da marca, fundo transparente. Substitui o SVG placeholder no menu.
+
+### Corrigido
+- Bug real na logo com tilt 3D: o `motion.div` que aplica a rotação usa `transform`, e um elemento com `transform` vira automaticamente uma nova referência de posicionamento para filhos `position: absolute` — como ele não tinha altura/largura definida, colapsava pra 0×0 e a imagem dentro nunca aparecia. Corrigido dando `h-full w-full` a esse `motion.div` (`components/ui/tilt-logo.tsx`).
+
 ## 2026-08-15
 
 ### Adicionado

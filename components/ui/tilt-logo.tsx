@@ -47,6 +47,7 @@ export function TiltLogo({
       style={{ perspective: 500 }}
     >
       <motion.div
+        className="relative h-full w-full"
         style={reduce ? undefined : { rotateY, rotateX, transformStyle: "preserve-3d" }}
       >
         {children}
