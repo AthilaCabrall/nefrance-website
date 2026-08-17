@@ -70,22 +70,6 @@
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
-  scroll-snap-type: y proximity;
-}
-
-/* Each top-level section is a soft landing point: scrolling eases toward the
-   nearest section edge only when it's already close, instead of forcing a
-   hard stop on every gesture. Gentler than "mandatory", still reads as
-   intentional on an institutional site. */
-main > section {
-  scroll-snap-align: start;
-  scroll-margin-top: 68px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-snap-type: none;
-  }
 }
 
 body {

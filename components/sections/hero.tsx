@@ -48,19 +48,12 @@ export function Hero() {
           className="relative mx-auto hidden aspect-square w-full max-w-[420px] items-center justify-center lg:flex lg:max-w-none"
         >
           <div
-            className="absolute h-[62%] w-[62%] rounded-full opacity-50 blur-[70px]"
+            className="absolute h-[72%] w-[72%] rounded-full opacity-50 blur-[70px]"
             style={{ background: "var(--brand-gradient)" }}
             aria-hidden
           />
 
-          <Brain3D className="relative h-[320px] w-[320px] md:h-[380px] md:w-[380px]" />
-
-          <div className="glass-panel-dark absolute bottom-2 left-4 z-10 flex items-center gap-3 rounded-[16px] px-4 py-3">
-            <span className="font-mono text-xl font-medium brand-gradient-text">+180</span>
-            <span className="max-w-[9ch] text-[12px] font-medium leading-tight text-ink-secondary">
-              avaliações concluídas em Goiânia
-            </span>
-          </div>
+          <Brain3D className="relative h-[420px] w-[420px] md:h-[500px] md:w-[500px]" />
         </motion.div>
       </Container>
     </section>
