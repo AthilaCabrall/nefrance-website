@@ -1,12 +1,11 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import Image from "next/image";
 import { Container } from "../ui/container";
 import { Button } from "../ui/button";
 import { Magnetic } from "../ui/magnetic";
 import { SplitText } from "../ui/split-text";
-import { TiltLogo } from "../ui/tilt-logo";
+import { Brain3D } from "../ui/brain-3d-loader";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -54,16 +53,7 @@ export function Hero() {
             aria-hidden
           />
 
-          <TiltLogo className="relative h-[300px] w-[300px] md:h-[360px] md:w-[360px]" maxTilt={16}>
-            <Image
-              src="/logo-3d.png"
-              alt="Instituto Nefrance"
-              fill
-              priority
-              className="object-contain drop-shadow-[0_30px_50px_rgba(91,33,182,0.45)]"
-              sizes="360px"
-            />
-          </TiltLogo>
+          <Brain3D className="relative h-[320px] w-[320px] md:h-[380px] md:w-[380px]" />
 
           <div className="glass-panel-dark absolute bottom-2 left-4 z-10 flex items-center gap-3 rounded-[16px] px-4 py-3">
             <span className="font-mono text-xl font-medium brand-gradient-text">+180</span>

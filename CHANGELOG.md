@@ -7,12 +7,15 @@ Registro de cada atualização do site, mais recente primeiro. Formato livre ins
 ### Adicionado
 - Logo 3D de verdade (`public/logo-3d.png`), gerada com Higgsfield (Recraft V4.1): cérebro em vidro/cromo com o degradê roxo → verde da marca, fundo transparente. Substitui o SVG placeholder no menu.
 - `.glass-panel-dark`: variante mais escura e densa do vidro fosco, pra painéis que flutuam sobre fundo claro/movimentado (a Aurora) e precisam de mais contraste.
+- **Cérebro em 3D de verdade no hero** (`public/brain.glb`, `components/ui/brain-3d.tsx`): modelo 3D real gerado com Higgsfield a partir da logo, renderizado com Three.js/React Three Fiber. Gira em geometria real conforme o mouse passa por cima (não é mais uma imagem plana inclinando). Comprimido de 13 MB para ~800 KB (texturas redimensionadas e recomprimidas, geometria com Draco) sem perda visível de qualidade. Só carrega em telas ≥1024px — celular nunca baixa o modelo.
+- Fotos reais da Andrea e da Ingrid, direto nas pastas `public/team/andrea/` e `public/team/ingrid/`.
 
 ### Alterado
 - **Hero**: a foto no bloco geométrico foi trocada pelo cérebro 3D girando (o mesmo da logo, agora bem maior), com o card de "+180 avaliações" no novo estilo de vidro escuro.
 
 ### Corrigido
 - Bug real na logo com tilt 3D: o `motion.div` que aplica a rotação usa `transform`, e um elemento com `transform` vira automaticamente uma nova referência de posicionamento para filhos `position: absolute` — como ele não tinha altura/largura definida, colapsava pra 0×0 e a imagem dentro nunca aparecia. Corrigido dando `h-full w-full` a esse `motion.div` (`components/ui/tilt-logo.tsx`).
+- Bug real no cérebro 3D: o `Environment` do drei estava aparecendo como uma skybox visível atrás do modelo (o "quadrado esquisito" que você viu) em vez de só iluminar o material. Corrigido com `background={false}`.
 
 ## 2026-08-15
 
