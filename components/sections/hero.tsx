@@ -6,6 +6,7 @@ import { Container } from "../ui/container";
 import { Button } from "../ui/button";
 import { Magnetic } from "../ui/magnetic";
 import { SplitText } from "../ui/split-text";
+import { TiltLogo } from "../ui/tilt-logo";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -47,20 +48,24 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
           className="relative mx-auto hidden aspect-square w-full max-w-[420px] items-center justify-center lg:flex lg:max-w-none"
         >
-          {/* Solid geometric block (Rio Negro reference). Swap the photo src for
-              a real one, and drop the logo PNG in this same corner, whenever ready. */}
-          <div className="absolute inset-x-8 inset-y-6 overflow-hidden rounded-[32px]">
+          <div
+            className="absolute h-[62%] w-[62%] rounded-full opacity-50 blur-[70px]"
+            style={{ background: "var(--brand-gradient)" }}
+            aria-hidden
+          />
+
+          <TiltLogo className="relative h-[300px] w-[300px] md:h-[360px] md:w-[360px]" maxTilt={16}>
             <Image
-              src="https://picsum.photos/seed/nefrance-hero-block/760/760"
-              alt=""
+              src="/logo-3d.png"
+              alt="Instituto Nefrance"
               fill
-              className="object-cover"
+              priority
+              className="object-contain drop-shadow-[0_30px_50px_rgba(91,33,182,0.45)]"
               sizes="360px"
             />
-            <div className="absolute inset-0 brand-gradient-bg opacity-40" aria-hidden />
-          </div>
+          </TiltLogo>
 
-          <div className="glass-panel absolute bottom-2 left-4 z-10 flex items-center gap-3 rounded-[16px] px-4 py-3">
+          <div className="glass-panel-dark absolute bottom-2 left-4 z-10 flex items-center gap-3 rounded-[16px] px-4 py-3">
             <span className="font-mono text-xl font-medium brand-gradient-text">+180</span>
             <span className="max-w-[9ch] text-[12px] font-medium leading-tight text-ink-secondary">
               avaliações concluídas em Goiânia

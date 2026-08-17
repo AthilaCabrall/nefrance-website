@@ -118,6 +118,16 @@ body {
   -webkit-backdrop-filter: blur(14px);
 }
 
+/* Darker, denser glass — for panels that float over busy/light backgrounds
+   (like the aurora) and need more contrast than .glass-panel gives. */
+.glass-panel-dark {
+  background: rgb(11 9 18 / 0.55);
+  border: 1px solid var(--border-silver);
+  box-shadow: 0 12px 40px -12px rgb(0 0 0 / 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
 .whatsapp-float {
   animation: whatsapp-pulse 2.6s ease-out infinite;
 }
